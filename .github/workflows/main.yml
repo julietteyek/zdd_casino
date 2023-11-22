@@ -1,0 +1,17 @@
+name: a first test workflow
+on:
+  push
+
+jobs:
+  my-first-CI:
+    runs-on: macos-latest
+    steps: #pro - ein Step im Job
+    - uses: actions/checkout@v3
+    - name: Set up Python #Name für den Schritt
+      uses: actions/setup-python@v3 #was der Schritt macht #installiert auf dem macos server python
+      with: #womit der Schritt gemacht wird
+        python-version: 3.10
+    - name: Install dependencies
+      run: pip install pytest #runt/macht das
+    - name: Run unit tests
+      run: pytest
